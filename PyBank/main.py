@@ -13,6 +13,8 @@ csvpath = "budget_data.csv"
 with open(csvpath) as csvfile:
     csvreader = csv.reader(csvfile, delimiter=",")
     csv_header = next(csvreader)
+        #Changes stores kv of date and change amount
+        #Records stores kv pair of date and amount
     for row in csvreader:
         changes[row[0]] = int(row[1]) - change_amount
         records[row[0]] = int(row[1])
@@ -23,12 +25,16 @@ for k, v in records.items():
     total_months = total_months + 1
     total_amount = total_amount + v
 
+#Gets the date (key) and amount (value) of the greatest increase
 increase_date = max(changes, key=changes.get)
 increase_amount = max(changes.values())
 
+#Gets the date (key) and amount (value) of the greatest deccrease
 decrease_date = min(changes, key=changes.get)
 decrease_amount = min(changes.values())
 
+#Calculates the average change using the changes dictionary. Subracts the first key,value pair since the value of this first
+#record should be no change.
 average_change = format((sum(changes.values()) - list(records.values())[0]) / (total_months - 1), '.2f')
 
 #Final Print Statement
