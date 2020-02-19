@@ -1,3 +1,3 @@
 # python-challenge
 
-Unit 3 Python Homework
+Unit 3 homework for WUSTL Bootcamp using Python.
